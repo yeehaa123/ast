@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+hgroup
+  h1 {{ course.title }}
+  h2 {{ course.subtitle }}
+
+article.syllabus
+  section.course-info
+  {{#with course.info}}
+    table
+      tr 
+        td Instructor:
+        td {{ instructor }}
+      {{#each staff}}
+      tr
+        td {{ isFirst @index }}
+        td {{ this }} 
+      {{/each}} 
+   {{/with}}
+
+  section.course-description
+    p {{{ course.description }}}
+
+  {{#each course.sessions }}
+  section.session{{this.order-prop}}
+    h2 
+      span {{ this.order-prop }} 
+      | {{ this.title }}
+
+    p {{getDate @index}}
+    {{{ this.contentRenderedWithoutLayouts }}}
+  {{/each}}
