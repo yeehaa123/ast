@@ -2,14 +2,23 @@ course =
   title: "Art, Science, and Technology"
   subtitle: "Coding the Humanities"
   info:
-    instructor: "Jan Hein Hoogstad"
     location: "P.C. Hoofthuis 4.59"
     time: "14:00 - 18:00"
     dates: [
-      "4/11/2014",
-      "11/11/2014",
-      "18/11/2014"
+      "4/2/2014",
+      "11/2/2014",
+      "18/2/2014",
+      "25/2/2014",
+      "4/3/2014",
+      "11/3/2014",
+      "8/4/2014",
+      "15/4/2014",
+      "22/4/2014",
+      "29/4/2014",
+      "6/5/2014",
+      "13/5/2014"
     ]
+    instructor: "Jan Hein Hoogstad"
     staff: [
       "Johanna Barnbeck",
       "Marijn Koolen",

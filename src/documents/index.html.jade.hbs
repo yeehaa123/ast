@@ -28,7 +28,16 @@ article.syllabus
     h2 
       span {{ this.order-prop }} 
       | {{ this.title }}
+    p {{getDate this.order-prop}}, {{ ../course.info.time }}
+    p {{ ../course.info.location }}
 
-    p {{getDate @index}}
-    {{{ this.contentRenderedWithoutLayouts }}}
+    table
+    {{#each this.resources}}
+      tr {{ @key }} 
+      {{#each this}}
+        tr
+          td {{ this.title }}
+          td {{ this.site.name }}
+      {{/each}}
+    {{/each}}
   {{/each}}
