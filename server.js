@@ -1,7 +1,10 @@
 var express = require('express');
 var http = require('http');
 var app = express();
-var server = http.createServer(app).listen(8080);
+var port = process.env.PORT || 8080;
+var server = http.createServer(app).listen(port);
+
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Add our Application Middlewares
 app.use(app.router);
