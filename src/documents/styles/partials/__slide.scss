@@ -1,0 +1,271 @@
+.slides {
+  height: 90%;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.slide {
+  padding: 50px 0;
+  box-shadow: 10px 10px 15px $base01;
+
+  header {
+    background-color: $base02;
+    @include span-columns(3);
+    @include omega();
+    position: fixed;
+    top: 0;
+
+    h1 {
+      font-size: em(24);
+    }
+
+    h2 {
+      text-align: center;
+      color: $base3;
+    }
+  }
+
+  p, li {
+    font-size: 28px;
+    line-height: em(28);
+    padding-right: em(36);
+  }
+
+  h1 {
+    font-size: em(36);
+  }
+
+  .whale, .dom-diagram, .synth-svg, .synth-gif, .dsp-svg {
+    margin: 0;
+  }
+
+  .synth-gif {
+    padding-top: 20px;
+  }
+
+  .dsp-svg {
+    padding-top: 80px;
+  }
+
+  .api, .whale, .json, .dom-diagram {
+    margin-left: -80px;
+    margin-top: -20px;
+    width: 650px;
+  }
+
+  .json, .whale {
+    margin-top: -55px;
+    margin-left: -60px;
+  }
+
+  .api {
+    margin-left: -65px;
+    margin-top: -87px;
+  }
+
+  blockquote {
+    p {
+      padding-right: em(40);
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: em(24);
+    }
+    + p {
+      padding-right: em(60);
+      font-size: 24px;
+      text-align: right;
+    }
+    + p + p {
+      padding-right: em(60);
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  code {
+    font-size: 20px;
+  }
+  
+  ol {
+    list-style-type: upper-roman;
+  }
+  
+  table {
+    margin-left: -60px;
+    font-size: 24px;
+    table-layout: fixed;
+    tr {
+      height: 80px;
+    }
+  }
+  section {
+    @include shift(2);
+    padding: 80px 0;
+  }
+
+  img {
+    margin-left: em(-75);
+    padding-top: em(40);
+    width: em(330); 
+  }
+
+  ul {
+    li {
+      p {
+        font-size: em(24);
+      }
+    }
+  }
+  
+  width: em(800); 
+  height: em(600);
+  &:not(.active) {
+    opacity: 0.3;
+  }
+  &.title, &.section-title {
+    padding: 100px  0;
+    header {
+      position: relative;
+      padding: em(30) 0;
+      width: 100%;
+      h1 {
+        font-size: em(48);
+      }
+      h2 {
+        text-align: center;
+        color: $base1;
+      }
+    }
+  }
+  &.section1 {
+    header, th {
+      background-color: $green;
+    }
+
+  }
+  &.section2 {
+    header, th {
+      background-color: $blue;
+    }
+  }
+  &.section3 {
+    header, th {
+      background-color: $cyan;
+    }
+  }
+
+  &.section4 {
+    header, th {
+      background-color: $violet;
+    }
+  }
+
+}
+
+.programme {
+  background-color: $base02;
+
+  header {
+    background-color: $base00;
+    @include omega;
+  }
+
+  section {
+    @include shift(0);
+    @include span-columns(12);
+  }
+
+  a > h2 {
+    margin: 0;
+    text-align: center;
+    margin-bottom: em(20);
+    padding: em(15);
+    color: $base3;
+
+    &.section1 {
+      background-color: $green;
+    }
+    &.section2 {
+        background-color: $blue;
+    }
+    &.section3 {
+        background-color: $cyan;
+    }
+    &.section4 {
+        background-color: $violet;
+    }
+  }
+}
+
+.quote, .normal {
+  header {
+    h1 {
+      font-size: em(24);
+    }
+    h2 {
+      font-size: em(18);
+      background-color: $base02;
+      padding: em(9) 0;
+    }
+  }
+  
+  section {
+    h1 {
+      padding-top: em(120, 48);
+      font-size: em(48);
+      margin-left: em(-30);
+      text-align: center;
+
+      span {
+        color: $red;
+        margin: em(5);
+      }
+    }
+
+    h2 {
+      padding-top: em(84, 48);
+      font-size: em(48);
+      margin-left: em(20);
+
+      span {
+        color: $base3;
+        margin: em(10);
+      }
+    }
+    h3 {
+      padding-top: em(120, 48);
+      font-size: em(48);
+      margin-left: em(5);
+
+      span {
+        color: $base3;
+      }
+    }
+
+    h4 {
+      padding-top: em(126, 28);
+      font-size: em(28);
+      margin-left: em(-45);
+
+
+      span {
+        color: $base3;
+      }
+    }
+    h5 {
+      margin-top: em(60, 24);
+      font-size: em(24);
+      color: $base3;
+      margin-left: em(-36);
+    }
+  }
+}
+
+.quote {
+  blockquote {
+    padding-top: em(30);
+  }
+
+  strong {
+    color: $red;
+  }
+}

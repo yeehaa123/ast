@@ -2,11 +2,11 @@
 layout: default
 ---
 
-hgroup
-  h1 {{ course.title }}
-  h2 {{ course.subtitle }}
-
 article.syllabus
+  hgroup
+    h1 {{ course.title }}
+    h2 {{ course.subtitle }}
+
   section.course-info
   {{#with course.info}}
     table
@@ -20,24 +20,62 @@ article.syllabus
       {{/each}} 
    {{/with}}
 
+   section.email-policy
+     h1 Email Policy
+     p {{ course.info.emailPolicy }}
+
+   section.course-objectives
+     h1 Objectives
+     ul
+     {{#each course.objectives}}
+       li {{ this }}
+     {{/each}}
+
   section.course-description
-    p {{{ course.description }}}
+    h1 Description
+    {{{ course.description }}}
 
-  {{#each course.sessions }}
-  section.session{{this.order-prop}}
-    h2 
-      span {{ this.order-prop }} 
-      | {{ this.title }}
-    p {{getDate this.order-prop}}, {{ ../course.info.time }}
-    p {{ ../course.info.location }}
+  section.requirements
+  {{#with course.requirements}}
+    h1 Requirements
+    {{{ description }}}
 
-    table
-    {{#each this.resources}}
-      tr {{ @key }} 
-      {{#each this}}
-        tr
-          td {{ this.title }}
-          td {{ this.site.name }}
+    section.prerequisites
+      h1 Prerequisites
+      p {{ prerequisites.description }}
+      table
+      {{#each this.prerequisites.resources}}
+        tr {{ @key }} 
+        {{#each this}}
+          tr
+            td {{ this.title }}
+            td {{ this.site.name }}
+        {{/each}}
       {{/each}}
-    {{/each}}
+      
+      section.resits
+      h1 Resits
+      p {{ resits }}
+
+      section.appeals
+      h1 Appeals
+      {{{ appeals }}}
+    {{/with}}
+
+  section.schedule
+    h1 Schedule
+    {{#each course.sessions }}
+    section.session{{this.order-prop}}
+      h1 
+        span {{ this.order-prop }} 
+        | {{ this.title }}
+      p {{getDate this.order-prop}}, {{ ../course.info.time }}
+      p {{ ../course.info.location }}
+
+      table
+        {{#each this.readings}}
+        tr
+          td {{ this.author }}
+          td {{ this.title }}
+        {{/each}}
   {{/each}}

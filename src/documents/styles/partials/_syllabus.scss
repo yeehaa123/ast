@@ -1,0 +1,15 @@
+.syllabus {
+  section {
+    h1 {
+      font-size: em(24, 16);
+    }
+    margin-bottom: em(32, 16);
+
+    section {
+      h1 {
+        font-size: em(20, 16);
+      }
+      margin-bottom: em(16, 16);
+    }
+  }   
+}
