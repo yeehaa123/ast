@@ -38,20 +38,28 @@ article.syllabus
   section.requirements
   {{#with course.requirements}}
     h1 Requirements
-    {{{ description }}}
+    p {{ description }}
 
     section.prerequisites
       h1 Prerequisites
       p {{ prerequisites.description }}
       table
       {{#each this.prerequisites.resources}}
-        tr {{ @key }} 
-        {{#each this}}
-          tr
-            td {{ this.title }}
-            td {{ this.site.name }}
-        {{/each}}
+        tr
+          td {{ this.title }}
+          td {{ this.site.name }}
       {{/each}}
+
+     section.assessment
+       h1 Assessment
+       {{{ assessment.description }}}
+
+     section.deadlines
+       h1 Deadlines
+       ul
+         {{#each assessment.deadlines}}
+         li {{@key}}: {{getDate this}}
+         {{/each}}
       
       section.resits
       h1 Resits
@@ -64,13 +72,15 @@ article.syllabus
 
   section.schedule
     h1 Schedule
-    {{#each course.sessions }}
+    p {{ course.schedule.disclaimer }}
+
+    {{#each course.schedule.sessions }}
     section.session{{this.order-prop}}
       h1 
         span {{ this.order-prop }} 
         | {{ this.title }}
       section.session-info
-        p {{getDate this.order-prop}}, {{ ../course.info.time }}
+        p {{getSessionDate this.order-prop}}, {{ ../course.info.time }}
         p {{ ../course.info.location }}
 
       table

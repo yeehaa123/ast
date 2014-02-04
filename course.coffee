@@ -27,7 +27,7 @@ course =
       "Kate Moore",
       "Melvin Wevers"
     ]
-    emailPolicy: "Questions can be asked during my ofﬁce hours. Email is only 
+    emailPolicy: "Questions can be asked during my office hours. Email is only 
                   for urgent matters and should be avoided as much as possible. 
                   Do not assume that I will respond to your email, or read it 
                   in time."
@@ -40,16 +40,32 @@ course =
   ]
   requirements: 
     prerequisites:
-      resources: 
-        online: [
-          title: "Web Track"
-          url: "http://www.codecademy.com/tracks/web"
-          site: 
-            name: "Codecademy"
-            url: "http://www.codecademy.com"
+      resources: [
+        title: "Web Track"
+        url: "http://www.codecademy.com/tracks/web"
+        site: 
+          name: "Codecademy"
+          url: "http://www.codecademy.com"
+      ,
+        title: "Try jQuery"
+        url: ""
+        site:
+          name: "Code School"
+          url: ""
+      ,
+        title: "Try Git"
+        url: ""
+        site:
+          name: "Code School"
+          url: ""
         ]
-  sessions: ->
-    @getCollection('sessions').toJSON()
+    assessment:
+      deadlines:
+        "deadline 1": "4/4/2014"
+        "deadline 2": "30/5/2014"
+  schedule:
+    sessions: ->
+      @getCollection('sessions').toJSON()
 
 course.description = "<p>Computers are literally everywhere. Through heterogeneous
 interfaces - such as sensors, transistors, and servo motors - they are 
@@ -73,27 +89,28 @@ goal of this course is not to turn you into professional programmers, but to
 gain an additional tool to pursue your research.</p>"
 
 
-course.requirements.description = "<p>My master level courses are research 
+course.requirements.description = "My master level courses are research 
 based. This means that I engage you in my current research projects, and that 
 you are expected to set up your own project during the semester. As a result, 
 the level is advanced from the start and there is little time to catch up in 
 between. You should spend 20 hours a week on average on this course 
 (corresponds to 12 ECTS). Make sure that you (pro-)actively participate 
-throughout the semester.</p>
+throughout the semester."
 
-<blockquote>Do not postpone your assignments until the week of the deadline!
-</blockquote>
+course.requirements.assessment.description = "<p>In order to complete this course, you 
+have to finish at least 8 out of 10 weekly assignments. You should collect 
+these assignments in a portfolio. This portfolio will be graded twice; the
+first time after the midterm break, the second at the end of the semester.</p> 
 
-<p>In order to successfully complete this course, you have to complete two 
-assignments (the ﬁrst is 30% of your ﬁnal grade, the second 50%) and give a 
-presentation (20%).</p>
+<blockquote>Final Grade = Weekly Assignments (0%) + Portfolio 1 (25%) + 
+Portfolio 2 (75%)</blockquote>
 
 <p>Weekly readings, coding exercises, and participation are also mandatory 
 but not graded separately. Failing these requirements, however, can lead 
 to a failing grade.</p>"
 
 
-course.requirements.prerequisites.description = "You do not need prior
+course.requirements.prerequisites.description = "You do not need prior 
 experience in coding to follow this course. I do expect you to do some minor 
 preparatory work, however. Before the second session, you should have 
 completed tutorials listed below. Anyone that fails to meet this requirement 
@@ -115,6 +132,9 @@ met all requirements listed above in time and your ﬁnal grade is below a 5.5.
 The resit consists of an entirely new version of both assignment 1 and 2. The 
 resit for the ﬁnal paper takes place in July. You will have the entire month 
 to complete your new project."
+
+course.schedule.disclaimer = "This schedule is under construction and will 
+change frequently throughout the semester. Please check regularly for changes."
 
 
 module.exports = course

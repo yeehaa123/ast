@@ -12,7 +12,9 @@ docpadConfig =
   plugins:
     handlebars:
       helpers:
-        getDate: (orderProp) ->
+        getDate: (date) ->
+          moment(date, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
+        getSessionDate: (orderProp) ->
           weekNumber = orderProp - 1
           sessionDate = docpadConfig.templateData.course.info.dates[weekNumber]
           moment(sessionDate, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
