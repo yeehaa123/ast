@@ -13,5 +13,8 @@
     "/src/files/vendor",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0"
+  }
 }

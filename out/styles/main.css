@@ -588,14 +588,21 @@ rijks-search-widget {
 .quote strong {
   color: #dc322f; }
 
+.syllabus hgroup {
+  margin-bottom: 1em; }
 .syllabus section {
   margin-bottom: 2em; }
   .syllabus section h1 {
     font-size: 1.5em; }
   .syllabus section section {
-    margin-bottom: 1em; }
+    margin-top: 1em; }
     .syllabus section section h1 {
       font-size: 1.25em; }
+.syllabus .session-info {
+  margin-top: 0.5em;
+  margin-bottom: 1.5em; }
+  .syllabus .session-info p {
+    margin: 0; }
 
 .main {
   padding: 0.5em 1em;

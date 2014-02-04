@@ -1,4 +1,8 @@
 .syllabus {
+  hgroup {
+    margin-bottom: em(16, 16);
+  }
+
   section {
     h1 {
       font-size: em(24, 16);
@@ -9,7 +13,14 @@
       h1 {
         font-size: em(20, 16);
       }
-      margin-bottom: em(16, 16);
+      margin-top: em(16, 16);
     }
   }   
+  .session-info {
+    margin-top: em(8, 16);
+    margin-bottom: em(24, 16);
+    p {
+      margin: 0;
+    }
+  }
 }

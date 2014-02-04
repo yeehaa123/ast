@@ -7,7 +7,7 @@ article.syllabus
     h1 {{ course.title }}
     h2 {{ course.subtitle }}
 
-  section.course-info
+  section.info
   {{#with course.info}}
     table
       tr 
@@ -24,14 +24,14 @@ article.syllabus
      h1 Email Policy
      p {{ course.info.emailPolicy }}
 
-   section.course-objectives
+   section.objectives
      h1 Objectives
      ul
      {{#each course.objectives}}
        li {{ this }}
      {{/each}}
 
-  section.course-description
+  section.description
     h1 Description
     {{{ course.description }}}
 
@@ -69,13 +69,29 @@ article.syllabus
       h1 
         span {{ this.order-prop }} 
         | {{ this.title }}
-      p {{getDate this.order-prop}}, {{ ../course.info.time }}
-      p {{ ../course.info.location }}
+      section.session-info
+        p {{getDate this.order-prop}}, {{ ../course.info.time }}
+        p {{ ../course.info.location }}
 
       table
         {{#each this.readings}}
         tr
+         {{#if author }}
           td {{ this.author }}
+          {{/if}}
+          {{#if authors}}
+          {{#each authors}}
+          td {{this}}
+          {{/each}}
+          {{/if}}
           td {{ this.title }}
+          {{#if book}}
+          td {{ book.title }}
+          {{/if}}
+          {{#if site}}
+          td {{ site.name }}
+          {{/if}}
         {{/each}}
   {{/each}}
+
+script(src="./vendor/jquery/jquery.js")
