@@ -603,6 +603,8 @@ rijks-search-widget {
   margin-bottom: 1.5em; }
   .syllabus .session-info p {
     margin: 0; }
+.syllabus a {
+  color: #dc322f; }
 
 .main {
   padding: 0.5em 1em;

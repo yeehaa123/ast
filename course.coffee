@@ -18,7 +18,9 @@ course =
       "6/5/2014",
       "13/5/2014"
     ]
-    instructor: "Jan Hein Hoogstad"
+    instructor: 
+      name: "Jan Hein Hoogstad"
+      email: "j.h.hoogstad@uva.nl"
     staff: [
       "Johanna Barnbeck",
       "Marijn Koolen",
@@ -128,9 +130,9 @@ a-z/klachten.cfm'>this link</a>."
 
 
 course.requirements.resits = "A resit of this class is only possible, if you 
-met all requirements listed above in time and your ﬁnal grade is below a 5.5. 
+met all requirements listed above in time and your final grade is below a 5.5. 
 The resit consists of an entirely new version of both assignment 1 and 2. The 
-resit for the ﬁnal paper takes place in July. You will have the entire month 
+resit for the final paper takes place in July. You will have the entire month 
 to complete your new project."
 
 course.schedule.disclaimer = "This schedule is under construction and will 

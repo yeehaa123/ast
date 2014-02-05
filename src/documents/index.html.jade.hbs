@@ -12,7 +12,7 @@ article.syllabus
     table
       tr 
         td Instructor:
-        td {{ instructor }}
+        td <a href="mailto:{{ instructor.email }}">{{ instructor.name }}</a>
       {{#each staff}}
       tr
         td {{ isFirst @index }}
