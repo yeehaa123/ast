@@ -102,6 +102,13 @@ article.syllabus
           td {{ site.name }}
           {{/if}}
         {{/each}}
+      
+      {{#if assignment}}
+      section.assignment
+        h1 Assignment
+        p {{ this.assignment.description }}
+        p Deadline: {{ getDate this.assignment.deadline }}
+      {{/if}}
   {{/each}}
 
 script(src="./vendor/jquery/jquery.js")
