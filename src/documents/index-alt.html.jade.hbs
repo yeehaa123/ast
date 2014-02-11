@@ -1,4 +1,5 @@
 ---
+title: Alt
 layout: default
 ---
 
@@ -108,10 +109,8 @@ article.syllabus
         h1 Assignment
         p {{ this.assignment.description }}
         p Deadline: {{ getDate this.assignment.deadline }}
-        {{#if this.assignment.result}}
-        p Results: <a href="{{this.assignment.result}}">follow link</a>
-        {{/if}}
       {{/if}}
   {{/each}}
 
 script(src="./vendor/jquery/jquery.js")
+script(src="./assignment1.js")
