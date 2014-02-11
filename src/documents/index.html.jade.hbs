@@ -86,7 +86,7 @@ article.syllabus
       table
         {{#each this.readings}}
         tr
-         {{#if author }}
+          {{#if author }}
           td {{ this.author }}
           {{/if}}
           {{#if authors}}
@@ -94,7 +94,11 @@ article.syllabus
           td {{this}}
           {{/each}}
           {{/if}}
+          {{#if this.url}}
+          td <a href="{{this.url}}">{{ this.title }}</a>
+          {{else}}
           td {{ this.title }}
+          {{/if}}
           {{#if book}}
           td {{ book.title }}
           {{/if}}
