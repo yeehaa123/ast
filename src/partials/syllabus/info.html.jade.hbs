@@ -1,0 +1,13 @@
+section.info
+{{#with course.info}}
+  table
+    tr 
+      td Instructor:
+      td <a href="mailto:{{ instructor.email }}">{{ instructor.name }}</a>
+    {{#each staff}}
+    tr
+      td {{ isFirst @index }}
+      td {{ this }} 
+    {{/each}} 
+ {{/with}}
+

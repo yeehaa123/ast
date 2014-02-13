@@ -23,7 +23,8 @@
     "marked": "~0.3.1",
     "docpad-plugin-moment": "~2.0.2",
     "moment": "~2.5.1",
-    "docpad-plugin-nodesass": "~2.2.1"
+    "docpad-plugin-nodesass": "~2.2.1",
+    "docpad-plugin-partials": "~2.8.1"
   },
   "devDependencies": {
     "bower": "~1.2.8"

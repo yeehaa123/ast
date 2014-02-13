@@ -20,5 +20,7 @@ docpadConfig =
           moment(sessionDate, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
         isFirst: (index) ->
           "Staff:" if index is 0
+        toJSON: (context) ->
+          JSON.stringify(context)
 
 module.exports = docpadConfig

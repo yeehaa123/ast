@@ -1,0 +1,41 @@
+section.session{{this.order-prop}}
+  h1 
+    span {{ this.order-prop }} 
+    | {{ this.title }}
+  section.session-info
+    p {{getSessionDate this.order-prop}}, {{ ../course.info.time }}
+    p {{ ../course.info.location }}
+
+  table
+    {{#each this.readings}}
+    tr
+      {{#if author }}
+      td {{ this.author }}
+      {{/if}}
+      {{#if authors}}
+      {{#each authors}}
+      td {{this}}
+      {{/each}}
+      {{/if}}
+      {{#if this.url}}
+      td <a href="{{this.url}}">{{ this.title }}</a>
+      {{else}}
+      td {{ this.title }}
+      {{/if}}
+      {{#if book}}
+      td {{ book.title }}
+      {{/if}}
+      {{#if site}}
+      td {{ site.name }}
+      {{/if}}
+    {{/each}}
+  
+  {{#if assignment}}
+  section.assignment
+    h1 Assignment
+    p {{ this.assignment.description }}
+    p Deadline: {{ getDate this.assignment.deadline }}
+    {{#if this.assignment.result}}
+    p Results: <a href="{{this.assignment.result}}">follow link</a>
+    {{/if}}
+  {{/if}}

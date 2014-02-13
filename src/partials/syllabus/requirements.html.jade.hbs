@@ -1,0 +1,34 @@
+section.requirements
+{{#with course.requirements}}
+  h1 Requirements
+  p {{ description }}
+
+  section.prerequisites
+    h1 Prerequisites
+    p {{ prerequisites.description }}
+    table
+    {{#each this.prerequisites.resources}}
+      tr
+        td {{ this.title }}
+        td {{ this.site.name }}
+    {{/each}}
+
+   section.assessment
+     h1 Assessment
+     {{{ assessment.description }}}
+
+   section.deadlines
+     h1 Deadlines
+     ul
+       {{#each assessment.deadlines}}
+       li {{@key}}: {{getDate this}}
+       {{/each}}
+    
+    section.resits
+    h1 Resits
+    p {{ resits }}
+
+    section.appeals
+    h1 Appeals
+    {{{ appeals }}}
+  {{/with}}

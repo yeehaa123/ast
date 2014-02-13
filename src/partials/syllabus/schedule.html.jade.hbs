@@ -1,0 +1,7 @@
+section.schedule
+  h1 Schedule
+  p {{ course.schedule.disclaimer }}
+
+  {{#each course.schedule.sessions }}
+  != partial('./syllabus/session.html.jade.hbs', {{{toJSON this}}} )
+  {{/each}}
