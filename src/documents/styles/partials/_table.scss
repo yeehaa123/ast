@@ -1,5 +1,6 @@
 table {
   @include span-columns(12);
+  display: table;
   background-color: $base2;
   margin-bottom: em(32);
   @include media($mobile){
