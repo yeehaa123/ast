@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Art, Science, and Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Abel|Codystar" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+  </head>
+</html>
+<body>
+  <section class="main">
+    <section class="content">
+<table>
+  <thead>
+    <tr>
+      <th>first name</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<script src="./vendor/jquery/jquery.js"></script>
+<script src="./vendor/handlebars/handlebars.js"></script>
+<script src="./vendor/d3/d3.js"></script>
+<script>
+  var randomBoolean = function(){
+    return Math.random()<.5;
+  }
+  
+  $(document).ready(function(){
+    var students = [];
+    var rawHTML = "<td>{{firstName}}{{#each assignments}}<td>{{#if this.completed}}<a href='{{this.url}}'>X</a>{{else}}_{{/if}}</td>{{/each}}</td>";
+    var template = Handlebars.compile(rawHTML);
+    
+    d3.csv('./students.csv', function(d){
+      students = d.map(function(student){
+        var assignments = [];
+        
+        for (var i = 0; i < 8; i++) {
+          assignments[i] = {
+            completed: randomBoolean(),
+            url: "https://gist.github.com/SerkOw/9124900"
+          };
+        }
+        
+        return {
+          firstName: student['First Name'],
+          lastName: student['Last Name'],
+          studentId: student['Student ID'],
+          assignments: assignments
+        };
+      })
+      
+      var studentsJSON = JSON.stringify(students);
+      localStorage.setItem('students', studentsJSON);
+      draw();
+    });
+    
+    function draw() {
+      d3.select('tbody')
+        .selectAll('tr')
+        .data(students)
+        .enter()
+        .append('tr')
+        .html(function(d){
+          return template(d);
+        })
+    };
+  });
+</script>
+    </section>
+  </section>
+</body>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Art, Science, and Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Abel|Codystar" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+  </head>
+</html>
+<body>
+  <section class="main">
+    <section class="content">
+<script src="./vendor/jquery/jquery.js"></script>
+<script src="./vendor/handlebars/handlebars.js"></script>
+<script src="./vendor/jquery.mockjson.js"></script>
+<script src="./vendor/d3/d3.js"></script>
+<script>
+  $(document).ready(function(){
+    var eventsTemplate = {
+      "events|5-20": [{
+      "title|1-2": "@LOREM ",
+      "rating|1-5": 0,
+      "isPick|0-1": true,
+      }]
+    };
+    
+  var events = $.mockJSON.generateFromTemplate(eventsTemplate);
+  var eventsJSON = JSON.stringify(events);  
+  
+  localStorage.setItem("assignment", eventsJSON); 
+  
+  var eventsJSON = localStorage.getItem('assignment');
+  var events = JSON.parse(eventsJSON).events;
+  var data = events;
+  draw();
+  
+   // d3.json('./wu-tang.json', function(d){
+   //   data = d.searchResponse.results.map(function(d){
+   //     return {
+   //       title: d.album.title,
+   //       rating: d.album.rating || 0,
+   //       isPick: d.album.isPick
+   //     };
+   //   });
+   //   draw();
+   // });
+   
+    function draw(){
+      var width = 500;
+      var height = 500;
+      var chartHeight = 300;
+      
+      var svg = d3.select('body')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        
+      var xScale = d3.scale.ordinal()
+        .domain(d3.range(data.length))
+        .rangeRoundBands([0, width], 0.2);
+        
+      var yScale = d3.scale.linear()
+        .domain([0, d3.max(data, function(d) { return d.rating; })])
+        .range([0, chartHeight]);
+        
+      var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient("left")
+        .ticks(5);
+        
+      var bars = svg.selectAll('g')
+        .data(data)
+        .enter()
+        .append('g')
+        .attr('x', function(d,i) {
+          return xScale(i) + xScale.rangeBand();
+        })
+        .attr('width', xScale.rangeBand() + 10)
+        .attr('height', chartHeight)
+        .append('g')
+        .attr("transform", function(d, i) {
+          return "translate(" + xScale(i) + "," + 0 + ")";
+        })
+        
+      bars.append('rect')
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return chartHeight - yScale(d.rating);
+        })
+        .attr('width', xScale.rangeBand()) 
+        .attr('height', function(d){
+          return yScale(d.rating);
+        })
+        .attr('fill', function(d){
+          if(d.isPick){
+            return 'red';
+          }
+          return 'green';
+        });
+        
+    bars.append("text")
+       .text(function(d) { return d.rating; })
+       .attr("text-anchor", "middle")
+       .attr("x", function(d, i) { return xScale.rangeBand() / 2; })
+       .attr("y", function(d) { return chartHeight - yScale(d.rating) + 14; })
+       .attr("font-family", "sans-serif")
+       .attr("font-size", "11px")
+       .attr("fill", "white");
+       
+    bars.append("text")
+       .text(function(d){
+         return d.title;
+       })
+       .attr("x", function(d, i) { return xScale.rangeBand() / 2; })
+       .attr("y", chartHeight + 10)
+       .attr("font-family", "sans-serif")
+       .attr("font-size", "11px")
+       .attr("fill", "black")
+       .style("writing-mode", "tb");
+    };
+  });
+</script>
+    </section>
+  </section>
+</body>

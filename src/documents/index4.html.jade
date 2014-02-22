@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+table
+  thead
+    tr
+      th first name
+      th 1
+      th 2
+      th 3
+      th 4
+      th 5
+      th 6
+      th 7
+      th 8
+  tbody
+
+!= partial('./scripts.html.jade')
+script(src='./vendor/d3/d3.js')
+
+script.
+  var randomBoolean = function(){
+    return Math.random()<.5;
+  }
+
+  $(document).ready(function(){
+    var students = [];
+    var rawHTML = "<td>{{firstName}}{{#each assignments}}<td>{{#if this.completed}}<a href='{{this.url}}'>X</a>{{else}}_{{/if}}</td>{{/each}}</td>";
+    var template = Handlebars.compile(rawHTML);
+
+    d3.csv('./students.csv', function(d){
+      students = d.map(function(student){
+        var assignments = [];
+
+        for (var i = 0; i < 8; i++) {
+          assignments[i] = {
+            completed: randomBoolean(),
+            url: "https://gist.github.com/SerkOw/9124900"
+          };
+        }
+
+        return {
+          firstName: student['First Name'],
+          lastName: student['Last Name'],
+          studentId: student['Student ID'],
+          assignments: assignments
+        };
+      })
+
+      var studentsJSON = JSON.stringify(students);
+      localStorage.setItem('students', studentsJSON);
+      draw();
+    });
+
+    function draw() {
+      d3.select('tbody')
+        .selectAll('tr')
+        .data(students)
+        .enter()
+        .append('tr')
+        .html(function(d){
+          return template(d);
+        })
+    };
+  });
+
