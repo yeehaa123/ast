@@ -6,6 +6,7 @@ table
   thead
     tr
       th first name
+      th last name
       th 1
       th 2
       th 3
@@ -20,38 +21,42 @@ table
 script(src='./vendor/d3/d3.js')
 
 script.
-  var randomBoolean = function(){
-    return Math.random()<.5;
-  }
+  // var
+  //   return Math.random()<.5;
+  // }
 
   $(document).ready(function(){
     var students = [];
-    var rawHTML = "<td>{{firstName}}{{#each assignments}}<td>{{#if this.completed}}<a href='{{this.url}}'>X</a>{{else}}_{{/if}}</td>{{/each}}</td>";
-    var template = Handlebars.compile(rawHTML);
 
-    d3.csv('./students.csv', function(d){
-      students = d.map(function(student){
-        var assignments = [];
+  //   d3.csv('./students.csv', function(d){
+  //     students = d.map(function(student){
+  //       var assignments = [];
 
-        for (var i = 0; i < 8; i++) {
-          assignments[i] = {
-            completed: randomBoolean(),
-            url: "https://gist.github.com/SerkOw/9124900"
-          };
-        }
+  //       for (var i = 0; i < 8; i++) {
+  //         assignments[i] = "";
+  //       }
 
-        return {
-          firstName: student['First Name'],
-          lastName: student['Last Name'],
-          studentId: student['Student ID'],
-          assignments: assignments
-        };
-      })
+  //       return {
+  //         firstName: student['First Name'],
+  //         lastName: student['Last Name'],
+  //         studentId: student['Student ID'],
+  //         assignments: assignments
+  //       };
+  //     })
 
-      var studentsJSON = JSON.stringify(students);
-      localStorage.setItem('students', studentsJSON);
+  //     var studentsJSON = JSON.stringify(students);
+  //     localStorage.setItem('students', studentsJSON);
+  //     draw();
+  //   });
+    d3.json("https://ast2014.firebaseio.com/students.json", function(d){
+      students = d.filter(function(student) {
+        return student;
+      });
       draw();
     });
+
+    var rawHTML = "<td>{{firstName}}</td><td>{{lastName}}</td>{{#each assignments}}<td>{{#if this}}<a href='{{this}}'>X</a>{{else}}_{{/if}}</td>{{/each}}</td>";
+    var template = Handlebars.compile(rawHTML);
 
     function draw() {
       d3.select('tbody')
