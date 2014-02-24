@@ -620,3 +620,6 @@ rijks-search-widget {
     .main {
       padding: 0.5em;
       padding-top: 0em; } }
+
+svg {
+  background-color: #eee8d5; }
