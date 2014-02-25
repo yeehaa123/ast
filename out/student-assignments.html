@@ -173,7 +173,11 @@
         });
         
       bars.append("text")
-        .text(function(d) { return d.numberOfAssignments; })
+        .text(function(d) { 
+          if(d.numberOfAssignments != 0) {
+            return d.numberOfAssignments; 
+          }
+        })
         .attr("text-anchor", "middle")
         .attr("x", function(d, i) { return xScale.rangeBand() / 2; })
         .attr("y", function(d) { return yScale(d.numberOfAssignments) + 20; })
