@@ -80,9 +80,14 @@ script.
       } else {
         chart.update();
       }
-  });
-  table.on("hover", function(d){
-    chart.highlight(d);
-  });
+    });
+
+    table.on("hover", function(d){
+      chart.highlight(d);
+    });
+
+    chart.on("hover", function(d){
+      table.highlight(d);
+    });
 
   });

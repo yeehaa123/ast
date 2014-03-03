@@ -14,9 +14,12 @@ d3.chart.table = function(){
   }
 
   function update() {
-    console.log(data);
     div.selectAll('tr')
-      .data(data)
+      .data(data, function(d){
+        if(d){
+          return d.studentId;
+        }
+      })
       .enter()
       .append('tr')
       .html(function(d){
@@ -36,12 +39,13 @@ d3.chart.table = function(){
     div.selectAll("tr").selectAll("td").style({
       "background-color": ""
     })
-    var trs = div.selectAll("tr").data(data, function(d) {
-      return d.studentId
+    var trs = div.selectAll("tr").data(data, function(d) { 
+      if(d){
+        return d.studentId;
+      }
     });
     trs.selectAll("td").style({
-      "background-color": "orange",
-      border: "1px solid black"
+      "background-color": "#dfefef",
     })
   } 
 

@@ -7,6 +7,7 @@ d3.chart.barChart = function(){
   var height = 550 - margin.top - margin.bottom;
   var chartHeight = 335;
   var div;
+  var dispatch = d3.dispatch(chart, "hover"); 
   var yScale, xScale, colorScale;
 
   function chart(container){
@@ -88,6 +89,7 @@ d3.chart.barChart = function(){
       .data(data, function(d) {
         return d.studentId;
       })
+  
     bars.transition().attr('x', 0)
       .attr('y', function(d) {
         return yScale(d.numberOfAssignments);
@@ -96,14 +98,24 @@ d3.chart.barChart = function(){
       .attr('height', function(d){
         return chartHeight - yScale(d.numberOfAssignments);
       })
-    .attr('fill', function(d){
+      .attr('fill', function(d){
       return colorScale(d.numberOfAssignments);
-    });
+      })
+
+    bars.on("mouseover", function(d){
+        d3.select(this).style({"fill": "orange"});
+        dispatch.hover([d]);
+     }) 
+     .on("mouseout", function(d){
+        d3.select(this).style({"fill": ""});
+        dispatch.hover([]);
+     }) 
 
     count = barsGroup.selectAll('text.count')
       .data(data, function(d) {
         return d.studentId;
       })
+    
     count.transition().text(function(d) { 
         if(d.numberOfAssignments != 0) {
           return d.numberOfAssignments; 
@@ -121,14 +133,15 @@ d3.chart.barChart = function(){
 
   chart.highlight = function(data) {
     div.selectAll("rect")
-    .style({
-      "fill": ""
-    })
+      .transition()
+      .style({
+        "fill": ""
+       })
     var b = div.selectAll("rect").data(data, function(d) { return d.studentId });
-    b.style({
+    b.transition().style({
       "fill": "orange",
     })
-  }
+  };
 
   chart.data = function(value) {
     if (!arguments.length) return data;
@@ -136,5 +149,5 @@ d3.chart.barChart = function(){
     return chart;
   }
 
-  return chart;
+  return d3.rebind(chart, dispatch, "on");
 };
