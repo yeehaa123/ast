@@ -57,6 +57,7 @@
   $(document).ready(function(){
     var students = [];
     var db = new Firebase("https://ast2014.firebaseio.com/students/");
+    window.database = db;
     
     var tableContainer = d3.select('table');
     var table = d3.chart.table();
@@ -67,18 +68,26 @@
     var isInitialized = false;
     
     db.on('value', function(d) {
-      students = d.val().filter(function(student) {
+      d = d.val();
+      var students = $.map(d, function(value, index) {
+          return [value];
+      }).filter(function(student) {
         return student;
       });
+      console.log(students);
       
       students.forEach(function(student){ 
         var numberOfAssignments = 0;
-        student.assignments.forEach(function(assignment){
-          if (assignment) {
-            numberOfAssignments += 1;
-          }
-          return numberOfAssignments;
-        });
+        if (student.assignments) {
+          student.assignments.forEach(function(assignment){
+            if (assignment) {
+              numberOfAssignments += 1;
+            }
+            return numberOfAssignments;
+          })
+        } else {
+          numberOfAssignments = 0;
+        }
         student.numberOfAssignments = numberOfAssignments;
       });
       
