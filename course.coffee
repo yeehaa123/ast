@@ -26,7 +26,7 @@ course =
       "Marijn Koolen",
       "Melle Kromhout",
       "Geli Mademli",
-      "Kate Moore",
+      "Kate Moore"
       "Melvin Wevers"
     ]
     emailPolicy: "Questions can be asked during my office hours. Email is only 
