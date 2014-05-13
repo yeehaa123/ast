@@ -73,10 +73,17 @@ $('<p>At first, it seemed like it was going to work without all the struggles we
 
  
 // Styling
-:qa
 // -------
 // Another good reason to separate concerns. I find it very difficult ro read
 // those styles below.
  
 $('body').css({'background-image': 'url("http://31.media.tumblr.com/353f0e35dd964b398f2e8ba58019ae9c/tumblr_n3cydw9aBu1s8nwbvo1_1280.jpg")','background-size':'110%','background-color': '#CC99FF','color': '#C93E0F','text-align':'center'});
 $('h1').css({'margin-top':'20px','margin-bottom':'10px','border':'2px solid absolu','border-style':'groove','border-radius':'25px','background': 'linear-gradient(to left, #A7DCB8 , white)','position':'relative','padding':'6px 10px'});
+
+
+// Overall
+// -------
+// Your portfolio focuses a lot on the learning process, which is good, but 
+// does not thematize at all how this relate to your 'normal' research process
+// Also, it gives the - probably wrong - impression that this is mainly Jan's
+// work. In your final portfolio, try to address both issues.
